@@ -1,0 +1,106 @@
+package lu.uni.apkanalysistemplate;
+
+import soot.*;
+import soot.toolkits.graph.DirectedGraph;
+import soot.toolkits.scalar.ForwardFlowAnalysis;
+import soot.jimple.*;
+
+import java.util.*;
+
+public class OddEvenAnalysis extends ForwardFlowAnalysis<Unit, Map<Local, OddEvenAnalysis.OddEvenState>> {
+
+    public enum OddEvenState{
+        TOP, EVEN, ODD, BOTTOM
+    }
+
+    public OddEvenAnalysis(DirectedGraph<Unit> graph){
+        super(graph);
+        doAnalysis();
+    }
+
+    @Override
+    protected Map<Local, OddEvenState> newInitialFlow() {
+    	return new HashMap<Local, OddEvenState>();
+    }
+    
+    @Override
+    protected void copy(Map<Local, OddEvenState> source, Map<Local, OddEvenState> dest) {
+        dest.clear();
+        dest.putAll(source);
+    }
+    
+    @Override
+    protected void merge(Map<Local, OddEvenState> in1, Map<Local, OddEvenState> in2, Map<Local, OddEvenState> out) {
+    	out.clear();
+    	Set<Local> allVariables = new HashSet<Local>(in1.keySet());
+    	allVariables.addAll(in2.keySet());
+    	
+    	for (Local var : allVariables) {
+    		OddEvenState state1 = in1.getOrDefault(var, OddEvenState.TOP);
+            OddEvenState state2 = in2.getOrDefault(var, OddEvenState.TOP);
+            out.put(var, meetStates(state1, state2));
+    	}
+    }
+    
+    private OddEvenState meetStates(OddEvenState s1, OddEvenState s2) {
+        if (s1 == s2) return s1;
+        if (s1 == OddEvenState.BOTTOM || s2 == OddEvenState.BOTTOM) return OddEvenState.BOTTOM;
+        return OddEvenState.TOP;
+    }
+    
+    protected void flowThrough(Map<Local, OddEvenState> in, Unit unit, Map<Local, OddEvenState> out) {
+    	copy(in,out);
+    	
+    	if (unit instanceof AssignStmt) {
+    		AssignStmt assign = (AssignStmt) unit;
+            if (assign.getLeftOp() instanceof Local) {
+                Local leftOp = (Local) assign.getLeftOp();
+                Value rightOp = assign.getRightOp();
+                
+                if (rightOp instanceof IntConstant) {
+                    int value = ((IntConstant) rightOp).value;
+                    out.put(leftOp, (value % 2 == 0) ? OddEvenState.EVEN : OddEvenState.ODD);
+                } else if (rightOp instanceof Local) {
+                    out.put(leftOp, out.getOrDefault(rightOp, OddEvenState.TOP));
+                } else if (rightOp instanceof BinopExpr) {
+                    handleBinaryOperation(out, leftOp, (BinopExpr) rightOp);
+                }
+            }
+    	}
+    }
+    
+    private void handleBinaryOperation(Map<Local, OddEvenState> out, Local leftOp, BinopExpr expr) {
+    	OddEvenState leftState = getState(out, expr.getOp1());
+        OddEvenState rightState = getState(out, expr.getOp2());
+        
+        if (expr instanceof AddExpr || expr instanceof SubExpr) {
+            out.put(leftOp, addStates(leftState, rightState));
+        } else if (expr instanceof MulExpr) {
+            out.put(leftOp, multiplyStates(leftState, rightState));
+        } else {
+            out.put(leftOp, OddEvenState.TOP);
+        }
+    }
+    
+    private OddEvenState getState(Map<Local, OddEvenState> out, Value op) {
+        if (op instanceof IntConstant) {
+            int value = ((IntConstant) op).value;
+            return (value % 2 == 0) ? OddEvenState.EVEN : OddEvenState.ODD;
+        } else if (op instanceof Local) {
+            return out.getOrDefault(op, OddEvenState.TOP);
+        }
+        return OddEvenState.TOP;
+    }
+    
+    private OddEvenState addStates(OddEvenState s1, OddEvenState s2) {
+        if (s1 == OddEvenState.TOP || s2 == OddEvenState.TOP) return OddEvenState.TOP;
+        if (s1 == s2) return OddEvenState.EVEN;
+        return OddEvenState.ODD;
+    }
+    
+    private OddEvenState multiplyStates(OddEvenState s1, OddEvenState s2) {
+        if (s1 == OddEvenState.EVEN || s2 == OddEvenState.EVEN) return OddEvenState.EVEN;
+        if (s1 == OddEvenState.ODD && s2 == OddEvenState.ODD) return OddEvenState.ODD;
+        return OddEvenState.TOP;
+    }  
+}

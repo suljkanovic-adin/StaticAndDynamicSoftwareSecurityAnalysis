@@ -1,0 +1,745 @@
+ApkAnalysisTemplate v1.0 started on Sun Oct 20 15:53:34 CEST 2024
+
+Analyzing method: <com.watchdog.R$drawable: void <init>()>
+Statement: $r0 := @this: com.watchdog.R$drawable
+Odd/Even state before: {}
+Odd/Even state after: {}
+Statement: specialinvoke $r0.<java.lang.Object: void <init>()>()
+Odd/Even state before: {}
+Odd/Even state after: {}
+Statement: return
+Odd/Even state before: {}
+Odd/Even state after: {}
+Analyzing method: <com.watchdog.Main: void <init>()>
+Statement: $r0 := @this: com.watchdog.Main
+Odd/Even state before: {}
+Odd/Even state after: {}
+Statement: specialinvoke $r0.<android.app.Activity: void <init>()>()
+Odd/Even state before: {}
+Odd/Even state after: {}
+Statement: return
+Odd/Even state before: {}
+Odd/Even state after: {}
+Analyzing method: <com.watchdog.Main: void onCreate(android.os.Bundle)>
+Statement: $r0 := @this: com.watchdog.Main
+Odd/Even state before: {}
+Odd/Even state after: {}
+Statement: $r1 := @parameter0: android.os.Bundle
+Odd/Even state before: {}
+Odd/Even state after: {}
+Statement: specialinvoke $r0.<android.app.Activity: void onCreate(android.os.Bundle)>($r1)
+Odd/Even state before: {}
+Odd/Even state after: {}
+Statement: $r2 = new android.content.Intent
+Odd/Even state before: {}
+Odd/Even state after: {}
+Statement: specialinvoke $r2.<android.content.Intent: void <init>(android.content.Context,java.lang.Class)>($r0, class "Lcom/watchdog/WatchdogService;")
+Odd/Even state before: {}
+Odd/Even state after: {}
+Statement: virtualinvoke $r2.<android.content.Intent: android.content.Intent putExtra(java.lang.String,int)>("action", 0)
+Odd/Even state before: {}
+Odd/Even state after: {}
+Statement: virtualinvoke $r0.<com.watchdog.Main: android.content.ComponentName startService(android.content.Intent)>($r2)
+Odd/Even state before: {}
+Odd/Even state after: {}
+Statement: virtualinvoke $r0.<com.watchdog.Main: void finish()>()
+Odd/Even state before: {}
+Odd/Even state after: {}
+Statement: return
+Odd/Even state before: {}
+Odd/Even state after: {}
+Analyzing method: <com.watchdog.Logger: void <init>()>
+Statement: $r0 := @this: com.watchdog.Logger
+Odd/Even state before: {}
+Odd/Even state after: {}
+Statement: specialinvoke $r0.<java.lang.Object: void <init>()>()
+Odd/Even state before: {}
+Odd/Even state after: {}
+Statement: return
+Odd/Even state before: {}
+Odd/Even state after: {}
+Analyzing method: <com.watchdog.Logger: void l(int,java.lang.String)>
+Statement: $i0 := @parameter0: int
+Odd/Even state before: {}
+Odd/Even state after: {}
+Statement: $r0 := @parameter1: java.lang.String
+Odd/Even state before: {}
+Odd/Even state after: {}
+Statement: if $i0 > 3 goto return
+Odd/Even state before: {}
+Odd/Even state after: {}
+Statement: if $r0 != null goto $i0 = 0
+Odd/Even state before: {}
+Odd/Even state after: {}
+Statement: return
+Odd/Even state before: {}
+Odd/Even state after: {}
+Statement: $i0 = 0
+Odd/Even state before: {}
+Odd/Even state after: {$i0=EVEN}
+Statement: $i1 = virtualinvoke $r0.<java.lang.String: int length()>()
+Odd/Even state before: {$i1=TOP, $i0=TOP}
+Odd/Even state after: {$i1=TOP, $i0=TOP}
+Statement: if $i0 >= $i1 goto return
+Odd/Even state before: {$i1=TOP, $i0=TOP}
+Odd/Even state after: {$i1=TOP, $i0=TOP}
+Statement: $i1 = $i0 + 130
+Odd/Even state before: {$i1=TOP, $i0=TOP}
+Odd/Even state after: {$i1=TOP, $i0=TOP}
+Statement: $i2 = virtualinvoke $r0.<java.lang.String: int length()>()
+Odd/Even state before: {$i1=TOP, $i0=TOP}
+Odd/Even state after: {$i1=TOP, $i0=TOP}
+Statement: if $i1 < $i2 goto $r1 = virtualinvoke $r0.<java.lang.String: java.lang.String substring(int,int)>($i0, $i1)
+Odd/Even state before: {$i1=TOP, $i0=TOP}
+Odd/Even state after: {$i1=TOP, $i0=TOP}
+Statement: $i1 = virtualinvoke $r0.<java.lang.String: int length()>()
+Odd/Even state before: {$i1=TOP, $i0=TOP}
+Odd/Even state after: {$i1=TOP, $i0=TOP}
+Statement: $r1 = virtualinvoke $r0.<java.lang.String: java.lang.String substring(int,int)>($i0, $i1)
+Odd/Even state before: {$i1=TOP, $i0=TOP}
+Odd/Even state after: {$i1=TOP, $i0=TOP}
+Statement: staticinvoke <android.util.Log: int i(java.lang.String,java.lang.String)>("watchdog", $r1)
+Odd/Even state before: {$i1=TOP, $i0=TOP}
+Odd/Even state after: {$i1=TOP, $i0=TOP}
+Statement: $i0 = $i1
+Odd/Even state before: {$i1=TOP, $i0=TOP}
+Odd/Even state after: {$i1=TOP, $i0=TOP}
+Statement: goto [?= $i1 = virtualinvoke $r0.<java.lang.String: int length()>()]
+Odd/Even state before: {$i1=TOP, $i0=TOP}
+Odd/Even state after: {$i1=TOP, $i0=TOP}
+Statement: return
+Odd/Even state before: {$i1=TOP, $i0=TOP}
+Odd/Even state after: {$i1=TOP, $i0=TOP}
+Analyzing method: <com.watchdog.Logger: void l(java.lang.Exception)>
+Statement: $r0 := @parameter0: java.lang.Exception
+Odd/Even state before: {}
+Odd/Even state after: {}
+Statement: $r1 = virtualinvoke $r0.<java.lang.Exception: java.lang.String toString()>()
+Odd/Even state before: {}
+Odd/Even state after: {}
+Statement: staticinvoke <com.watchdog.Logger: void l(java.lang.String)>($r1)
+Odd/Even state before: {}
+Odd/Even state after: {}
+Statement: $r2 = virtualinvoke $r0.<java.lang.Exception: java.lang.StackTraceElement[] getStackTrace()>()
+Odd/Even state before: {}
+Odd/Even state after: {}
+Statement: if $r2 != null goto $i0 = 0
+Odd/Even state before: {}
+Odd/Even state after: {}
+Statement: return
+Odd/Even state before: {}
+Odd/Even state after: {}
+Statement: $i0 = 0
+Odd/Even state before: {}
+Odd/Even state after: {$i0=EVEN}
+Statement: $i1 = lengthof $r2
+Odd/Even state before: {$i0=TOP}
+Odd/Even state after: {$i0=TOP}
+Statement: if $i0 >= $i1 goto return
+Odd/Even state before: {$i0=TOP}
+Odd/Even state after: {$i0=TOP}
+Statement: $r3 = $r2[$i0]
+Odd/Even state before: {$i0=TOP}
+Odd/Even state after: {$i0=TOP}
+Statement: if $r3 == null goto $i0 = $i0 + 1
+Odd/Even state before: {$i0=TOP}
+Odd/Even state after: {$i0=TOP}
+Statement: $r3 = $r2[$i0]
+Odd/Even state before: {$i0=TOP}
+Odd/Even state after: {$i0=TOP}
+Statement: $r1 = virtualinvoke $r3.<java.lang.StackTraceElement: java.lang.String toString()>()
+Odd/Even state before: {$i0=TOP}
+Odd/Even state after: {$i0=TOP}
+Statement: staticinvoke <com.watchdog.Logger: void l(java.lang.String)>($r1)
+Odd/Even state before: {$i0=TOP}
+Odd/Even state after: {$i0=TOP}
+Statement: $i0 = $i0 + 1
+Odd/Even state before: {$i0=TOP}
+Odd/Even state after: {$i0=TOP}
+Statement: goto [?= $i1 = lengthof $r2]
+Odd/Even state before: {$i0=TOP}
+Odd/Even state after: {$i0=TOP}
+Statement: return
+Odd/Even state before: {$i0=TOP}
+Odd/Even state after: {$i0=TOP}
+Analyzing method: <com.watchdog.Logger: void l(java.lang.String)>
+Statement: $r0 := @parameter0: java.lang.String
+Odd/Even state before: {}
+Odd/Even state after: {}
+Statement: staticinvoke <com.watchdog.Logger: void l(int,java.lang.String)>(0, $r0)
+Odd/Even state before: {}
+Odd/Even state after: {}
+Statement: return
+Odd/Even state before: {}
+Odd/Even state after: {}
+Analyzing method: <com.watchdog.WatchdogService$ServiceHandler: void <init>(com.watchdog.WatchdogService,android.os.Looper)>
+Statement: $r0 := @this: com.watchdog.WatchdogService$ServiceHandler
+Odd/Even state before: {}
+Odd/Even state after: {}
+Statement: $r1 := @parameter0: com.watchdog.WatchdogService
+Odd/Even state before: {}
+Odd/Even state after: {}
+Statement: $r2 := @parameter1: android.os.Looper
+Odd/Even state before: {}
+Odd/Even state after: {}
+Statement: $r0.<com.watchdog.WatchdogService$ServiceHandler: com.watchdog.WatchdogService this$0> = $r1
+Odd/Even state before: {}
+Odd/Even state after: {}
+Statement: specialinvoke $r0.<android.os.Handler: void <init>(android.os.Looper)>($r2)
+Odd/Even state before: {}
+Odd/Even state after: {}
+Statement: return
+Odd/Even state before: {}
+Odd/Even state after: {}
+Analyzing method: <com.watchdog.WatchdogService$ServiceHandler: void handleMessage(android.os.Message)>
+Statement: $r0 := @this: com.watchdog.WatchdogService$ServiceHandler
+Odd/Even state before: {}
+Odd/Even state after: {}
+Statement: $r1 := @parameter0: android.os.Message
+Odd/Even state before: {}
+Odd/Even state after: {}
+Statement: $r2 = $r1.<android.os.Message: java.lang.Object obj>
+Odd/Even state before: {}
+Odd/Even state after: {}
+Statement: $r3 = (android.os.Bundle) $r2
+Odd/Even state before: {}
+Odd/Even state after: {}
+Statement: if $r3 == null goto return
+Odd/Even state before: {}
+Odd/Even state after: {}
+Statement: $i0 = virtualinvoke $r3.<android.os.Bundle: int getInt(java.lang.String)>("action")
+Odd/Even state before: {}
+Odd/Even state after: {}
+Statement: lookupswitch($i0) {     case 0: goto $r4 = $r0.<com.watchdog.WatchdogService$ServiceHandler: com.watchdog.WatchdogService this$0>;     default: goto staticinvoke <com.watchdog.Logger: void l(java.lang.String)>("invalide service message"); }
+Odd/Even state before: {}
+Odd/Even state after: {}
+Statement: staticinvoke <com.watchdog.Logger: void l(java.lang.String)>("invalide service message")
+Odd/Even state before: {}
+Odd/Even state after: {}
+Statement: return
+Odd/Even state before: {}
+Odd/Even state after: {}
+Statement: $r4 = $r0.<com.watchdog.WatchdogService$ServiceHandler: com.watchdog.WatchdogService this$0>
+Odd/Even state before: {}
+Odd/Even state after: {}
+Statement: staticinvoke <com.watchdog.WatchdogService: void access$0(com.watchdog.WatchdogService,java.lang.String)>($r4, "com.xabber.android")
+Odd/Even state before: {}
+Odd/Even state after: {}
+Statement: return
+Odd/Even state before: {}
+Odd/Even state after: {}
+Analyzing method: <com.watchdog.BootReceiver: void <init>()>
+Statement: $r0 := @this: com.watchdog.BootReceiver
+Odd/Even state before: {}
+Odd/Even state after: {}
+Statement: specialinvoke $r0.<android.content.BroadcastReceiver: void <init>()>()
+Odd/Even state before: {}
+Odd/Even state after: {}
+Statement: return
+Odd/Even state before: {}
+Odd/Even state after: {}
+Analyzing method: <com.watchdog.BootReceiver: void onReceive(android.content.Context,android.content.Intent)>
+Statement: $r0 := @this: com.watchdog.BootReceiver
+Odd/Even state before: {}
+Odd/Even state after: {}
+Statement: $r1 := @parameter0: android.content.Context
+Odd/Even state before: {}
+Odd/Even state after: {}
+Statement: $r2 := @parameter1: android.content.Intent
+Odd/Even state before: {}
+Odd/Even state after: {}
+Statement: $r2 = new android.content.Intent
+Odd/Even state before: {}
+Odd/Even state after: {}
+Statement: specialinvoke $r2.<android.content.Intent: void <init>(android.content.Context,java.lang.Class)>($r1, class "Lcom/watchdog/WatchdogService;")
+Odd/Even state before: {}
+Odd/Even state after: {}
+Statement: virtualinvoke $r2.<android.content.Intent: android.content.Intent putExtra(java.lang.String,int)>("action", 0)
+Odd/Even state before: {}
+Odd/Even state after: {}
+Statement: virtualinvoke $r1.<android.content.Context: android.content.ComponentName startService(android.content.Intent)>($r2)
+Odd/Even state before: {}
+Odd/Even state after: {}
+Statement: return
+Odd/Even state before: {}
+Odd/Even state after: {}
+Analyzing method: <com.watchdog.R$attr: void <init>()>
+Statement: $r0 := @this: com.watchdog.R$attr
+Odd/Even state before: {}
+Odd/Even state after: {}
+Statement: specialinvoke $r0.<java.lang.Object: void <init>()>()
+Odd/Even state before: {}
+Odd/Even state after: {}
+Statement: return
+Odd/Even state before: {}
+Odd/Even state after: {}
+Analyzing method: <com.watchdog.WatchdogService: void <init>()>
+Statement: $r0 := @this: com.watchdog.WatchdogService
+Odd/Even state before: {}
+Odd/Even state after: {}
+Statement: specialinvoke $r0.<android.app.Service: void <init>()>()
+Odd/Even state before: {}
+Odd/Even state after: {}
+Statement: return
+Odd/Even state before: {}
+Odd/Even state after: {}
+Analyzing method: <com.watchdog.WatchdogService: void access$0(com.watchdog.WatchdogService,java.lang.String)>
+Statement: $r0 := @parameter0: com.watchdog.WatchdogService
+Odd/Even state before: {}
+Odd/Even state after: {}
+Statement: $r1 := @parameter1: java.lang.String
+Odd/Even state before: {}
+Odd/Even state after: {}
+Statement: specialinvoke $r0.<com.watchdog.WatchdogService: void watchApp(java.lang.String)>($r1)
+Odd/Even state before: {}
+Odd/Even state after: {}
+Statement: return
+Odd/Even state before: {}
+Odd/Even state after: {}
+Analyzing method: <com.watchdog.WatchdogService: android.content.Intent getLaunchIntent(java.lang.String)>
+Statement: $r0 := @this: com.watchdog.WatchdogService
+Odd/Even state before: {}
+Odd/Even state after: {}
+Statement: $r1 := @parameter0: java.lang.String
+Odd/Even state before: {}
+Odd/Even state after: {}
+Statement: $r2 = null
+Odd/Even state before: {}
+Odd/Even state after: {}
+Statement: $z0 = staticinvoke <android.text.TextUtils: boolean isEmpty(java.lang.CharSequence)>($r1)
+Odd/Even state before: {}
+Odd/Even state after: {}
+Statement: if $z0 != 0 goto return null
+Odd/Even state before: {}
+Odd/Even state after: {}
+Statement: $r3 = virtualinvoke $r0.<com.watchdog.WatchdogService: android.content.pm.PackageManager getPackageManager()>()
+Odd/Even state before: {}
+Odd/Even state after: {}
+Statement: $r4 = virtualinvoke $r3.<android.content.pm.PackageManager: java.util.List getInstalledApplications(int)>(0)
+Odd/Even state before: {}
+Odd/Even state after: {}
+Statement: $r5 = interfaceinvoke $r4.<java.util.List: java.util.ListIterator listIterator()>()
+Odd/Even state before: {}
+Odd/Even state after: {}
+Statement: $z0 = interfaceinvoke $r5.<java.util.ListIterator: boolean hasNext()>()
+Odd/Even state before: {$r2=TOP}
+Odd/Even state after: {$r2=TOP}
+Statement: if $z0 == 0 goto return $r2
+Odd/Even state before: {$r2=TOP}
+Odd/Even state after: {$r2=TOP}
+Statement: if $r2 == null goto $r6 = interfaceinvoke $r5.<java.util.ListIterator: java.lang.Object next()>()
+Odd/Even state before: {$r2=TOP}
+Odd/Even state after: {$r2=TOP}
+Statement: return $r2
+Odd/Even state before: {$r2=TOP}
+Odd/Even state after: {$r2=TOP}
+Statement: $r6 = interfaceinvoke $r5.<java.util.ListIterator: java.lang.Object next()>()
+Odd/Even state before: {$r2=TOP}
+Odd/Even state after: {$r2=TOP}
+Statement: $r7 = (android.content.pm.ApplicationInfo) $r6
+Odd/Even state before: {$r2=TOP}
+Odd/Even state after: {$r2=TOP}
+Statement: $r8 = $r7.<android.content.pm.ApplicationInfo: java.lang.String packageName>
+Odd/Even state before: {$r2=TOP}
+Odd/Even state after: {$r2=TOP}
+Statement: $z0 = virtualinvoke $r8.<java.lang.String: boolean equals(java.lang.Object)>($r1)
+Odd/Even state before: {$r2=TOP}
+Odd/Even state after: {$r2=TOP}
+Statement: if $z0 == 0 goto $z0 = interfaceinvoke $r5.<java.util.ListIterator: boolean hasNext()>()
+Odd/Even state before: {$r2=TOP}
+Odd/Even state after: {$r2=TOP}
+Statement: $r8 = $r7.<android.content.pm.ApplicationInfo: java.lang.String packageName>
+Odd/Even state before: {$r2=TOP}
+Odd/Even state after: {$r2=TOP}
+Statement: $r9 = virtualinvoke $r3.<android.content.pm.PackageManager: android.content.Intent getLaunchIntentForPackage(java.lang.String)>($r8)
+Odd/Even state before: {$r2=TOP}
+Odd/Even state after: {$r2=TOP}
+Statement: $r2 = $r9
+Odd/Even state before: {$r2=TOP}
+Odd/Even state after: {$r2=TOP}
+Statement: goto [?= $z0 = interfaceinvoke $r5.<java.util.ListIterator: boolean hasNext()>()]
+Odd/Even state before: {$r2=TOP}
+Odd/Even state after: {$r2=TOP}
+Statement: $r10 := @caughtexception
+Odd/Even state before: {$r2=TOP}
+Odd/Even state after: {$r2=TOP}
+Statement: staticinvoke <com.watchdog.Logger: void l(java.lang.Exception)>($r10)
+Odd/Even state before: {$r2=TOP}
+Odd/Even state after: {$r2=TOP}
+Statement: goto [?= $z0 = interfaceinvoke $r5.<java.util.ListIterator: boolean hasNext()>()]
+Odd/Even state before: {$r2=TOP}
+Odd/Even state after: {$r2=TOP}
+Statement: return null
+Odd/Even state before: {}
+Odd/Even state after: {}
+Statement: return $r2
+Odd/Even state before: {$r2=TOP}
+Odd/Even state after: {$r2=TOP}
+Analyzing method: <com.watchdog.WatchdogService: void startAlarm()>
+Statement: $r0 := @this: com.watchdog.WatchdogService
+Odd/Even state before: {}
+Odd/Even state after: {}
+Statement: $r2 = virtualinvoke $r0.<com.watchdog.WatchdogService: java.lang.Object getSystemService(java.lang.String)>("alarm")
+Odd/Even state before: {}
+Odd/Even state after: {}
+Statement: $r3 = (android.app.AlarmManager) $r2
+Odd/Even state before: {}
+Odd/Even state after: {}
+Statement: $r1 = new android.content.Intent
+Odd/Even state before: {}
+Odd/Even state after: {}
+Statement: specialinvoke $r1.<android.content.Intent: void <init>(android.content.Context,java.lang.Class)>($r0, class "Lcom/watchdog/AlarmReceiver;")
+Odd/Even state before: {}
+Odd/Even state after: {}
+Statement: virtualinvoke $r1.<android.content.Intent: android.content.Intent putExtra(java.lang.String,java.lang.String)>("guard", "watchdog")
+Odd/Even state before: {}
+Odd/Even state after: {}
+Statement: $r4 = staticinvoke <android.app.PendingIntent: android.app.PendingIntent getBroadcast(android.content.Context,int,android.content.Intent,int)>($r0, 0, $r1, 134217728)
+Odd/Even state before: {}
+Odd/Even state after: {}
+Statement: $l0 = staticinvoke <java.lang.System: long currentTimeMillis()>()
+Odd/Even state before: {}
+Odd/Even state after: {}
+Statement: $l0 = $l0 + 60000L
+Odd/Even state before: {}
+Odd/Even state after: {$l0=TOP}
+Statement: virtualinvoke $r3.<android.app.AlarmManager: void set(int,long,android.app.PendingIntent)>(0, $l0, $r4)
+Odd/Even state before: {$l0=TOP}
+Odd/Even state after: {$l0=TOP}
+Statement: staticinvoke <com.watchdog.Logger: void l(java.lang.String)>("start alarm")
+Odd/Even state before: {$l0=TOP}
+Odd/Even state after: {$l0=TOP}
+Statement: return
+Odd/Even state before: {$l0=TOP}
+Odd/Even state after: {$l0=TOP}
+Statement: $r5 := @caughtexception
+Odd/Even state before: {$l0=TOP}
+Odd/Even state after: {$l0=TOP}
+Statement: staticinvoke <com.watchdog.Logger: void l(java.lang.Exception)>($r5)
+Odd/Even state before: {$l0=TOP}
+Odd/Even state after: {$l0=TOP}
+Statement: return
+Odd/Even state before: {$l0=TOP}
+Odd/Even state after: {$l0=TOP}
+Analyzing method: <com.watchdog.WatchdogService: void watchApp(java.lang.String)>
+Statement: $r0 := @this: com.watchdog.WatchdogService
+Odd/Even state before: {}
+Odd/Even state after: {}
+Statement: $r1 := @parameter0: java.lang.String
+Odd/Even state before: {}
+Odd/Even state after: {}
+Statement: $r2 = null
+Odd/Even state before: {}
+Odd/Even state after: {}
+Statement: $z0 = staticinvoke <android.text.TextUtils: boolean isEmpty(java.lang.CharSequence)>($r1)
+Odd/Even state before: {}
+Odd/Even state after: {}
+Statement: if $z0 != 0 goto (branch)
+Odd/Even state before: {}
+Odd/Even state after: {}
+Statement: $r3 = virtualinvoke $r0.<com.watchdog.WatchdogService: java.lang.Object getSystemService(java.lang.String)>("activity")
+Odd/Even state before: {}
+Odd/Even state after: {}
+Statement: $r4 = (android.app.ActivityManager) $r3
+Odd/Even state before: {}
+Odd/Even state after: {}
+Statement: $r5 = virtualinvoke $r4.<android.app.ActivityManager: java.util.List getRunningAppProcesses()>()
+Odd/Even state before: {}
+Odd/Even state after: {}
+Statement: $r6 = interfaceinvoke $r5.<java.util.List: java.util.ListIterator listIterator()>()
+Odd/Even state before: {}
+Odd/Even state after: {}
+Statement: $z0 = interfaceinvoke $r6.<java.util.ListIterator: boolean hasNext()>()
+Odd/Even state before: {$r2=TOP, $i0=TOP}
+Odd/Even state after: {$r2=TOP, $i0=TOP}
+Statement: if $z0 == 0 goto (branch)
+Odd/Even state before: {$r2=TOP, $i0=TOP}
+Odd/Even state after: {$r2=TOP, $i0=TOP}
+Statement: if $r2 == null goto $r3 = interfaceinvoke $r6.<java.util.ListIterator: java.lang.Object next()>()
+Odd/Even state before: {$r2=TOP, $i0=TOP}
+Odd/Even state after: {$r2=TOP, $i0=TOP}
+Statement: if $r2 != null goto specialinvoke $r0.<com.watchdog.WatchdogService: void startAlarm()>()
+Odd/Even state before: {$r2=TOP, $i0=TOP}
+Odd/Even state after: {$r2=TOP, $i0=TOP}
+Statement: $r7 = specialinvoke $r0.<com.watchdog.WatchdogService: android.content.Intent getLaunchIntent(java.lang.String)>($r1)
+Odd/Even state before: {$r2=TOP, $i0=TOP}
+Odd/Even state after: {$r2=TOP, $i0=TOP}
+Statement: virtualinvoke $r7.<android.content.Intent: android.content.Intent setFlags(int)>(268435456)
+Odd/Even state before: {$r2=TOP, $i0=TOP}
+Odd/Even state after: {$r2=TOP, $i0=TOP}
+Statement: virtualinvoke $r0.<com.watchdog.WatchdogService: void startActivity(android.content.Intent)>($r7)
+Odd/Even state before: {$r2=TOP, $i0=TOP}
+Odd/Even state after: {$r2=TOP, $i0=TOP}
+Statement: specialinvoke $r0.<com.watchdog.WatchdogService: void startAlarm()>()
+Odd/Even state before: {$r2=TOP, $i0=TOP}
+Odd/Even state after: {$r2=TOP, $i0=TOP}
+Statement: return
+Odd/Even state before: {$r2=TOP, $i0=TOP}
+Odd/Even state after: {$r2=TOP, $i0=TOP}
+Statement: $r3 = interfaceinvoke $r6.<java.util.ListIterator: java.lang.Object next()>()
+Odd/Even state before: {$r2=TOP, $i0=TOP}
+Odd/Even state after: {$r2=TOP, $i0=TOP}
+Statement: $r8 = (android.app.ActivityManager$RunningAppProcessInfo) $r3
+Odd/Even state before: {$r2=TOP, $i0=TOP}
+Odd/Even state after: {$r2=TOP, $i0=TOP}
+Statement: $r9 = $r8.<android.app.ActivityManager$RunningAppProcessInfo: java.lang.String[] pkgList>
+Odd/Even state before: {$r2=TOP, $i0=TOP}
+Odd/Even state after: {$r2=TOP, $i0=TOP}
+Statement: if $r9 == null goto $z0 = interfaceinvoke $r6.<java.util.ListIterator: boolean hasNext()>()
+Odd/Even state before: {$r2=TOP, $i0=TOP}
+Odd/Even state after: {$r2=TOP, $i0=TOP}
+Statement: $i0 = 0
+Odd/Even state before: {$r2=TOP, $i0=TOP}
+Odd/Even state after: {$r2=TOP, $i0=EVEN}
+Statement: $r9 = $r8.<android.app.ActivityManager$RunningAppProcessInfo: java.lang.String[] pkgList>
+Odd/Even state before: {$r2=TOP, $i0=TOP}
+Odd/Even state after: {$r2=TOP, $i0=TOP}
+Statement: $i1 = lengthof $r9
+Odd/Even state before: {$r2=TOP, $i0=TOP}
+Odd/Even state after: {$r2=TOP, $i0=TOP}
+Statement: if $i0 >= $i1 goto $z0 = interfaceinvoke $r6.<java.util.ListIterator: boolean hasNext()>()
+Odd/Even state before: {$r2=TOP, $i0=TOP}
+Odd/Even state after: {$r2=TOP, $i0=TOP}
+Statement: if $r2 != null goto $z0 = interfaceinvoke $r6.<java.util.ListIterator: boolean hasNext()>()
+Odd/Even state before: {$r2=TOP, $i0=TOP}
+Odd/Even state after: {$r2=TOP, $i0=TOP}
+Statement: $r9 = $r8.<android.app.ActivityManager$RunningAppProcessInfo: java.lang.String[] pkgList>
+Odd/Even state before: {$r2=TOP, $i0=TOP}
+Odd/Even state after: {$r2=TOP, $i0=TOP}
+Statement: $r10 = $r9[$i0]
+Odd/Even state before: {$r2=TOP, $i0=TOP}
+Odd/Even state after: {$r2=TOP, $i0=TOP}
+Statement: $z0 = virtualinvoke $r1.<java.lang.String: boolean equals(java.lang.Object)>($r10)
+Odd/Even state before: {$r2=TOP, $i0=TOP}
+Odd/Even state after: {$r2=TOP, $i0=TOP}
+Statement: if $z0 == 0 goto $i0 = $i0 + 1
+Odd/Even state before: {$r2=TOP, $i0=TOP}
+Odd/Even state after: {$r2=TOP, $i0=TOP}
+Statement: $r2 = $r8
+Odd/Even state before: {$r2=TOP, $i0=TOP}
+Odd/Even state after: {$r2=TOP, $i0=TOP}
+Statement: $i0 = $i0 + 1
+Odd/Even state before: {$r2=TOP, $i0=TOP}
+Odd/Even state after: {$r2=TOP, $i0=TOP}
+Statement: goto [?= $r9 = $r8.<android.app.ActivityManager$RunningAppProcessInfo: java.lang.String[] pkgList>]
+Odd/Even state before: {$r2=TOP, $i0=TOP}
+Odd/Even state after: {$r2=TOP, $i0=TOP}
+Statement: $r11 := @caughtexception
+Odd/Even state before: {$r2=TOP, $i0=TOP}
+Odd/Even state after: {$r2=TOP, $i0=TOP}
+Statement: staticinvoke <com.watchdog.Logger: void l(java.lang.Exception)>($r11)
+Odd/Even state before: {$r2=TOP, $i0=TOP}
+Odd/Even state after: {$r2=TOP, $i0=TOP}
+Statement: goto [?= specialinvoke $r0.<com.watchdog.WatchdogService: void startAlarm()>()]
+Odd/Even state before: {$r2=TOP, $i0=TOP}
+Odd/Even state after: {$r2=TOP, $i0=TOP}
+Analyzing method: <com.watchdog.WatchdogService: android.os.IBinder onBind(android.content.Intent)>
+Statement: $r0 := @this: com.watchdog.WatchdogService
+Odd/Even state before: {}
+Odd/Even state after: {}
+Statement: $r1 := @parameter0: android.content.Intent
+Odd/Even state before: {}
+Odd/Even state after: {}
+Statement: return null
+Odd/Even state before: {}
+Odd/Even state after: {}
+Analyzing method: <com.watchdog.WatchdogService: void onCreate()>
+Statement: $r0 := @this: com.watchdog.WatchdogService
+Odd/Even state before: {}
+Odd/Even state after: {}
+Statement: specialinvoke $r0.<android.app.Service: void onCreate()>()
+Odd/Even state before: {}
+Odd/Even state after: {}
+Statement: $r1 = new android.os.HandlerThread
+Odd/Even state before: {}
+Odd/Even state after: {}
+Statement: specialinvoke $r1.<android.os.HandlerThread: void <init>(java.lang.String)>("XabberWatchdog")
+Odd/Even state before: {}
+Odd/Even state after: {}
+Statement: virtualinvoke $r1.<android.os.HandlerThread: void start()>()
+Odd/Even state before: {}
+Odd/Even state after: {}
+Statement: $r2 = virtualinvoke $r1.<android.os.HandlerThread: android.os.Looper getLooper()>()
+Odd/Even state before: {}
+Odd/Even state after: {}
+Statement: $r0.<com.watchdog.WatchdogService: android.os.Looper mServiceLooper> = $r2
+Odd/Even state before: {}
+Odd/Even state after: {}
+Statement: $r3 = new com.watchdog.WatchdogService$ServiceHandler
+Odd/Even state before: {}
+Odd/Even state after: {}
+Statement: $r2 = $r0.<com.watchdog.WatchdogService: android.os.Looper mServiceLooper>
+Odd/Even state before: {}
+Odd/Even state after: {}
+Statement: specialinvoke $r3.<com.watchdog.WatchdogService$ServiceHandler: void <init>(com.watchdog.WatchdogService,android.os.Looper)>($r0, $r2)
+Odd/Even state before: {}
+Odd/Even state after: {}
+Statement: $r0.<com.watchdog.WatchdogService: com.watchdog.WatchdogService$ServiceHandler mServiceHandler> = $r3
+Odd/Even state before: {}
+Odd/Even state after: {}
+Statement: return
+Odd/Even state before: {}
+Odd/Even state after: {}
+Analyzing method: <com.watchdog.WatchdogService: void onDestroy()>
+Statement: $r0 := @this: com.watchdog.WatchdogService
+Odd/Even state before: {}
+Odd/Even state after: {}
+Statement: specialinvoke $r0.<android.app.Service: void onDestroy()>()
+Odd/Even state before: {}
+Odd/Even state after: {}
+Statement: $r1 = $r0.<com.watchdog.WatchdogService: android.os.Looper mServiceLooper>
+Odd/Even state before: {}
+Odd/Even state after: {}
+Statement: virtualinvoke $r1.<android.os.Looper: void quit()>()
+Odd/Even state before: {}
+Odd/Even state after: {}
+Statement: return
+Odd/Even state before: {}
+Odd/Even state after: {}
+Analyzing method: <com.watchdog.WatchdogService: void onStart(android.content.Intent,int)>
+Statement: $r0 := @this: com.watchdog.WatchdogService
+Odd/Even state before: {}
+Odd/Even state after: {}
+Statement: $r1 := @parameter0: android.content.Intent
+Odd/Even state before: {}
+Odd/Even state after: {}
+Statement: $i0 := @parameter1: int
+Odd/Even state before: {}
+Odd/Even state after: {}
+Statement: specialinvoke $r0.<android.app.Service: void onStart(android.content.Intent,int)>($r1, $i0)
+Odd/Even state before: {}
+Odd/Even state after: {}
+Statement: $r2 = new java.lang.StringBuilder
+Odd/Even state before: {}
+Odd/Even state after: {}
+Statement: specialinvoke $r2.<java.lang.StringBuilder: void <init>(java.lang.String)>("XabberWatchdog onStart ")
+Odd/Even state before: {}
+Odd/Even state after: {}
+Statement: $r2 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($r1)
+Odd/Even state before: {}
+Odd/Even state after: {}
+Statement: $r2 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(", ")
+Odd/Even state before: {}
+Odd/Even state after: {}
+Statement: $r2 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($i0)
+Odd/Even state before: {}
+Odd/Even state after: {}
+Statement: $r3 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.String toString()>()
+Odd/Even state before: {}
+Odd/Even state after: {}
+Statement: staticinvoke <com.watchdog.Logger: void l(java.lang.String)>($r3)
+Odd/Even state before: {}
+Odd/Even state after: {}
+Statement: if $r1 != null goto $r4 = $r0.<com.watchdog.WatchdogService: com.watchdog.WatchdogService$ServiceHandler mServiceHandler>
+Odd/Even state before: {}
+Odd/Even state after: {}
+Statement: return
+Odd/Even state before: {}
+Odd/Even state after: {}
+Statement: $r4 = $r0.<com.watchdog.WatchdogService: com.watchdog.WatchdogService$ServiceHandler mServiceHandler>
+Odd/Even state before: {}
+Odd/Even state after: {}
+Statement: $r5 = virtualinvoke $r4.<com.watchdog.WatchdogService$ServiceHandler: android.os.Message obtainMessage()>()
+Odd/Even state before: {}
+Odd/Even state after: {}
+Statement: $r5.<android.os.Message: int arg1> = $i0
+Odd/Even state before: {}
+Odd/Even state after: {}
+Statement: $r6 = virtualinvoke $r1.<android.content.Intent: android.os.Bundle getExtras()>()
+Odd/Even state before: {}
+Odd/Even state after: {}
+Statement: $r5.<android.os.Message: java.lang.Object obj> = $r6
+Odd/Even state before: {}
+Odd/Even state after: {}
+Statement: $r4 = $r0.<com.watchdog.WatchdogService: com.watchdog.WatchdogService$ServiceHandler mServiceHandler>
+Odd/Even state before: {}
+Odd/Even state after: {}
+Statement: virtualinvoke $r4.<com.watchdog.WatchdogService$ServiceHandler: boolean sendMessage(android.os.Message)>($r5)
+Odd/Even state before: {}
+Odd/Even state after: {}
+Statement: return
+Odd/Even state before: {}
+Odd/Even state after: {}
+Analyzing method: <com.watchdog.R$layout: void <init>()>
+Statement: $r0 := @this: com.watchdog.R$layout
+Odd/Even state before: {}
+Odd/Even state after: {}
+Statement: specialinvoke $r0.<java.lang.Object: void <init>()>()
+Odd/Even state before: {}
+Odd/Even state after: {}
+Statement: return
+Odd/Even state before: {}
+Odd/Even state after: {}
+Analyzing method: <com.watchdog.R: void <init>()>
+Statement: $r0 := @this: com.watchdog.R
+Odd/Even state before: {}
+Odd/Even state after: {}
+Statement: specialinvoke $r0.<java.lang.Object: void <init>()>()
+Odd/Even state before: {}
+Odd/Even state after: {}
+Statement: return
+Odd/Even state before: {}
+Odd/Even state after: {}
+Analyzing method: <com.watchdog.AlarmReceiver: void <init>()>
+Statement: $r0 := @this: com.watchdog.AlarmReceiver
+Odd/Even state before: {}
+Odd/Even state after: {}
+Statement: specialinvoke $r0.<android.content.BroadcastReceiver: void <init>()>()
+Odd/Even state before: {}
+Odd/Even state after: {}
+Statement: return
+Odd/Even state before: {}
+Odd/Even state after: {}
+Analyzing method: <com.watchdog.AlarmReceiver: void onReceive(android.content.Context,android.content.Intent)>
+Statement: $r0 := @this: com.watchdog.AlarmReceiver
+Odd/Even state before: {}
+Odd/Even state after: {}
+Statement: $r1 := @parameter0: android.content.Context
+Odd/Even state before: {}
+Odd/Even state after: {}
+Statement: $r2 := @parameter1: android.content.Intent
+Odd/Even state before: {}
+Odd/Even state after: {}
+Statement: $r3 = virtualinvoke $r2.<android.content.Intent: java.lang.String getStringExtra(java.lang.String)>("guard")
+Odd/Even state before: {}
+Odd/Even state after: {}
+Statement: if $r3 == null goto staticinvoke <com.watchdog.Logger: void l(java.lang.String)>("Invalid alarm")
+Odd/Even state before: {}
+Odd/Even state after: {}
+Statement: $z0 = virtualinvoke $r3.<java.lang.String: boolean equals(java.lang.Object)>("watchdog")
+Odd/Even state before: {}
+Odd/Even state after: {}
+Statement: if $z0 == 0 goto staticinvoke <com.watchdog.Logger: void l(java.lang.String)>("Invalid alarm")
+Odd/Even state before: {}
+Odd/Even state after: {}
+Statement: $r2 = new android.content.Intent
+Odd/Even state before: {}
+Odd/Even state after: {}
+Statement: specialinvoke $r2.<android.content.Intent: void <init>(android.content.Context,java.lang.Class)>($r1, class "Lcom/watchdog/WatchdogService;")
+Odd/Even state before: {}
+Odd/Even state after: {}
+Statement: virtualinvoke $r2.<android.content.Intent: android.content.Intent putExtra(java.lang.String,int)>("action", 0)
+Odd/Even state before: {}
+Odd/Even state after: {}
+Statement: virtualinvoke $r1.<android.content.Context: android.content.ComponentName startService(android.content.Intent)>($r2)
+Odd/Even state before: {}
+Odd/Even state after: {}
+Statement: return
+Odd/Even state before: {}
+Odd/Even state after: {}
+Statement: staticinvoke <com.watchdog.Logger: void l(java.lang.String)>("Invalid alarm")
+Odd/Even state before: {}
+Odd/Even state after: {}
+Statement: return
+Odd/Even state before: {}
+Odd/Even state after: {}
+Analyzing method: <com.watchdog.R$string: void <init>()>
+Statement: $r0 := @this: com.watchdog.R$string
+Odd/Even state before: {}
+Odd/Even state after: {}
+Statement: specialinvoke $r0.<java.lang.Object: void <init>()>()
+Odd/Even state before: {}
+Odd/Even state after: {}
+Statement: return
+Odd/Even state before: {}
+Odd/Even state after: {}

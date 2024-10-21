@@ -1,0 +1,20 @@
+PackManager.v().getPack("jtp").add(
+				new Transform("jtp.reachingDefinitionTransform", new BodyTransformer() {
+					protected void internalTransform(Body body, String phase, Map options) {
+						SootMethod method = body.getMethod();
+			            System.out.println("Analyzing method: " + method.getSignature());
+			            
+			            UnitGraph cfg = new ExceptionalUnitGraph(body);
+			            ReachingDefinitionAnalysis analysis = new ReachingDefinitionAnalysis(cfg);
+			            
+			            for (Unit unit : body.getUnits()) {
+			                System.out.println("Statement: " + unit);
+			                System.out.println("Reaching definitions before: " + analysis.getFlowBefore(unit));
+			                System.out.println("Reaching definitions after: " + analysis.getFlowAfter(unit));
+			                System.out.println();
+			            }
+					}
+				})
+		);
+		
+		PackManager.v().runPacks();
