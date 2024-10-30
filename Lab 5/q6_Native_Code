@@ -1,0 +1,11 @@
+class NativeExample {
+    native void nativeMethod();
+    
+    public void caller() {
+        nativeMethod();  // Calls C/C++ code
+    }
+    
+    static {
+        System.loadLibrary("native");
+    }
+}
