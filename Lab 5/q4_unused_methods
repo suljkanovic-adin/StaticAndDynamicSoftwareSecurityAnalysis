@@ -1,0 +1,28 @@
+ApkAnalysisTemplate v1.0 started on Wed Oct 30 16:23:30 CET 2024
+
+Unused methods:
+<com.watchdog.BootReceiver: void onReceive(android.content.Context,android.content.Intent)>
+<com.watchdog.Main: void <init>()>
+<com.watchdog.Logger: void l(int,java.lang.String)>
+<com.watchdog.WatchdogService: void access$0(com.watchdog.WatchdogService,java.lang.String)>
+<com.watchdog.WatchdogService: android.os.IBinder onBind(android.content.Intent)>
+<com.watchdog.WatchdogService: android.content.Intent getLaunchIntent(java.lang.String)>
+<com.watchdog.WatchdogService: void <init>()>
+<com.watchdog.WatchdogService: void onCreate()>
+<com.watchdog.WatchdogService: void startAlarm()>
+<com.watchdog.AlarmReceiver: void <init>()>
+<com.watchdog.R$layout: void <init>()>
+<com.watchdog.WatchdogService: void onStart(android.content.Intent,int)>
+<com.watchdog.WatchdogService: void watchApp(java.lang.String)>
+<com.watchdog.BootReceiver: void <init>()>
+<com.watchdog.WatchdogService$ServiceHandler: void handleMessage(android.os.Message)>
+<com.watchdog.Logger: void l(java.lang.Exception)>
+<com.watchdog.AlarmReceiver: void onReceive(android.content.Context,android.content.Intent)>
+<com.watchdog.WatchdogService$ServiceHandler: void <init>(com.watchdog.WatchdogService,android.os.Looper)>
+<com.watchdog.Logger: void l(java.lang.String)>
+<com.watchdog.Logger: void <init>()>
+<com.watchdog.R$drawable: void <init>()>
+<com.watchdog.R$string: void <init>()>
+<com.watchdog.WatchdogService: void onDestroy()>
+<com.watchdog.R: void <init>()>
+<com.watchdog.R$attr: void <init>()>
