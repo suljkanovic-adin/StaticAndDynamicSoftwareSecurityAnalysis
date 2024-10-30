@@ -1,0 +1,11 @@
+class Example {
+    private void secretMethod() {
+        System.out.println("Secret method.");
+    }
+    
+    public void caller() {
+        Method method = this.getClass().getDeclaredMethod("secretMethod");
+        method.setAccessible(true);
+        method.invoke(this);
+    }
+}
