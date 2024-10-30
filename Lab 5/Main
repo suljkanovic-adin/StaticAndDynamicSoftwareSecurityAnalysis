@@ -1,0 +1,248 @@
+package lu.uni.apkanalysistemplate;
+
+import lu.uni.apkanalysistemplate.utils.CommandLineOptions;
+
+import lu.uni.apkanalysistemplate.utils.Constants;
+import polyglot.ast.Stmt;
+import soot.Body;
+import soot.BodyTransformer;
+import soot.G;
+import soot.PackManager;
+import soot.Scene;
+import soot.SceneTransformer;
+import soot.Transform;
+import soot.Unit;
+import soot.ValueBox;
+import soot.options.Options;
+import soot.*;
+import soot.jimple.*;
+import soot.jimple.toolkits.callgraph.CallGraph;
+import soot.jimple.toolkits.callgraph.Edge;
+
+import java.util.*;
+import java.util.Timer;
+import soot.toolkits.graph.*;
+import soot.util.Chain;
+
+
+/**
+ * This class is a template for APK analysis
+ * For educational purpose
+ *
+ * @author  Jordan Samhi
+ * @version 1.0
+ * @since   2021
+ */
+
+public class Main {
+	public static void main(String[] args) throws Throwable {
+		System.out.println(String.format("%s v1.0 started on %s\n", Constants.TOOL_NAME, new Date()));
+		CommandLineOptions.v().parseArgs(args);
+
+		/*
+		 * Soot options initialization
+		 */
+		initializeSoot();
+
+		/*
+		 * The whole-jimple transformation pack.
+		 * This is the primary pack into which you should insert any inter-procedural/whole-program analysis.
+		 * When it executes, a call-graph has already been computed and can be accessed right away.
+		 */
+		
+		PackManager.v().getPack("wjtp").add(
+				new Transform("wjtp.myTransform", new SceneTransformer() {
+				protected void internalTransform(String pn, Map o) {
+					CallGraph cg = Scene.v().getCallGraph();
+					
+					// Q1
+					/*int nodeCount = 0;
+					Iterator<MethodOrMethodContext> methods = cg.sourceMethods();
+	            
+					while (methods.hasNext()) {
+						nodeCount++;
+						methods.next();
+					}
+	            
+					System.out.println("Number of nodes in call graph: " + nodeCount);*/
+					
+					// Q2
+					Iterator<Edge> edges = cg.iterator();
+			        /*while (edges.hasNext()) {
+			        	Edge edge = edges.next();
+			            System.out.println("Source (Caller): " + edge.src());
+			            System.out.println("Target (Callee): " + edge.tgt());
+			            System.out.println("---");
+			        }
+					
+					// Q3
+					SootMethod entryPoint = Scene.v().getEntryPoints().get(0);
+		            
+		            Set<SootMethod> visited = new HashSet<SootMethod>();
+		            int maxLength = findLongestChain(cg, entryPoint, visited);
+		            
+		            System.out.println("Longest chain length: " + maxLength);*/
+					
+					// Q3
+					Set<SootMethod> reachableMethods = new HashSet<SootMethod>();
+					
+					while (edges.hasNext()) {
+		                Edge edge = edges.next();
+		                reachableMethods.add(edge.src());
+		                reachableMethods.add(edge.tgt());
+		            }
+					
+					Chain<SootClass> classes = Scene.v().getApplicationClasses();
+		            Set<SootMethod> allMethods = new HashSet<SootMethod>();
+		            for (SootClass sc : classes) {
+		                allMethods.addAll(sc.getMethods());
+		            }
+		            
+		            allMethods.removeAll(reachableMethods);
+		            System.out.println("Unused methods:");
+		            for (SootMethod method : allMethods) {
+		                System.out.println(method.getSignature());
+		            }
+					
+				}
+				
+				private int findLongestChain(CallGraph cg, SootMethod current, Set<SootMethod> visited) {
+					if (visited.contains(current)) {
+		                return 0;
+		            }
+					
+					visited.add(current);
+		            int maxLength = 0;
+		            
+		            Iterator<Edge> edges = cg.edgesOutOf(current);
+		            while (edges.hasNext()) {
+		                Edge edge = edges.next();
+		                int length = findLongestChain(cg, edge.tgt(), new HashSet<SootMethod>(visited));
+		                maxLength = Math.max(maxLength, length);
+		            }
+		            
+		            return maxLength + 1;
+				}
+				}));
+		PackManager.v().runPacks();
+
+		/*
+		 * The jimple transformation pack.
+		 * This is usually where you want to place your intra-procedural analyses.
+		 */
+		/*PackManager.v().getPack("jtp").add(
+				new Transform("jtp.myTransform", new BodyTransformer() {
+			
+					private int totalMethods = 0;
+					private int statementsCount = 0;
+					private int functionCalls = 0;
+					List<String> constantStrings = new ArrayList<String>();
+					List<String> methodNames = new ArrayList<String>();
+					
+					protected void internalTransform(Body body, String phase, @SuppressWarnings("rawtypes") Map options) {
+						// YOUR CODE HERE
+						String methodName = body.getMethod().getName();
+						String className = body.getMethod().getDeclaringClass().getName();
+						
+						totalMethods++;
+						methodNames.add("Method " + className + "." + methodName);
+						
+						if(methodName.equals("startAlarm")) {
+			                statementsCount = body.getUnits().size();
+			                System.out.println("Statements in startAlarm: " + statementsCount);
+			            }
+						
+						if(methodName.equals("watchApp")) {S
+			                for(Unit unit : body.getUnits()) {
+			                    if(unit instanceof InvokeStmt || 
+			                    (unit instanceof AssignStmt && ((AssignStmt)unit).containsInvokeExpr())) {
+			                       functionCalls++;
+			                    }
+			                }
+			                System.out.println("Function calls in watchApp: " + functionCalls);
+			            }
+						
+						if(methodName.contentEquals("handleMessage")) {
+							for(Unit unit : body.getUnits()) {
+								for(ValueBox valueBox : unit.getUseAndDefBoxes()) {
+									Value value = valueBox.getValue();
+									if(value instanceof StringConstant) {
+										constantStrings.add(((StringConstant) value).value);
+									}
+								}
+							}
+						    System.out.println("Constant strings in handleMessage: " + constantStrings);
+						}
+					}
+				}));
+		PackManager.v().runPacks();*/
+	}
+		
+		/*PackManager.v().getPack("jtp").add(
+				new Transform("jtp.oddEvenTransform", new BodyTransformer() {
+					protected void internalTransform(Body body, String phase, @SuppressWarnings("rawtypes") Map options) {
+						SootMethod method = body.getMethod();
+	                    System.out.println("Analyzing method: " + method.getSignature());
+	                    
+	                    UnitGraph cfg = new ExceptionalUnitGraph(body);
+	                    OddEvenAnalysis analysis = new OddEvenAnalysis(cfg);
+	                    
+	                    for (Unit unit : body.getUnits()) {
+	                        System.out.println("Statement: " + unit);
+	                        System.out.println("Odd/Even state before: " + analysis.getFlowBefore(unit));
+	                        System.out.println("Odd/Even state after: " + analysis.getFlowAfter(unit));
+	                    }
+					}
+				})
+		);
+	
+		PackManager.v().runPacks();
+		
+		PackManager.v().getPack("jtp").add(
+				new Transform("jtp.reachingDefinitionTransform", new BodyTransformer() {
+					protected void internalTransform(Body body, String phase, Map options) {
+						SootMethod method = body.getMethod();
+			            System.out.println("Analyzing method: " + method.getSignature());
+			            
+			            UnitGraph cfg = new ExceptionalUnitGraph(body);
+			            ReachingDefinitionAnalysis analysis = new ReachingDefinitionAnalysis(cfg);
+			            
+			            for (Unit unit : body.getUnits()) {
+			                System.out.println("Statement: " + unit);
+			                System.out.println("Reaching definitions before: " + analysis.getFlowBefore(unit));
+			                System.out.println("Reaching definitions after: " + analysis.getFlowAfter(unit));
+			                System.out.println();
+			            }
+					}
+				})
+		);
+		
+		PackManager.v().runPacks();l
+	}*/
+		
+		
+		
+		
+
+	/**
+	 * Initialize Soot options
+	 * It mimics command-line options
+	 */
+	private static void initializeSoot() {
+		G.reset();
+		Options.v().set_allow_phantom_refs(true);
+		Options.v().set_output_format(Options.output_format_none);
+		Options.v().set_src_prec(Options.src_prec_apk);
+		Options.v().set_whole_program(true);
+		Options.v().set_process_multiple_dex(true);
+		Options.v().setPhaseOption("cg.spark", "enabled:true");
+		List<String> dirs = new ArrayList<String>();
+		dirs.add(CommandLineOptions.v().getApk());
+		Options.v().set_process_dir(dirs);
+		Options.v().set_android_jars(CommandLineOptions.v().getPlatforms());
+		Scene.v().loadNecessaryClasses();
+		List<SootMethod> eps = new ArrayList<SootMethod>();
+		eps.add(Scene.v().getMethod("<com.watchdog.Main: void onCreate(android.os.Bundle)>"));
+		Scene.v().setEntryPoints(eps);
+	}
+}
