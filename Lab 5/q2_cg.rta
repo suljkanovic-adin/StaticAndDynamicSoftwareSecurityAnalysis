@@ -1,0 +1,69 @@
+ApkAnalysisTemplate v1.0 started on Wed Oct 30 16:04:20 CET 2024
+
+Number of nodes in call graph: 12
+Source (Caller): <java.lang.RuntimeException: void <init>(java.lang.String)>
+Target (Callee): <java.lang.RuntimeException: void <init>(java.lang.String)>
+---
+Source (Caller): <java.lang.Exception: void <init>()>
+Target (Callee): <java.lang.RuntimeException: void <init>(java.lang.String)>
+---
+Source (Caller): <com.watchdog.Main: void onCreate(android.os.Bundle)>
+Target (Callee): <android.app.Activity: void finish()>
+---
+Source (Caller): <java.lang.Throwable: void <init>()>
+Target (Callee): <java.lang.RuntimeException: void <init>(java.lang.String)>
+---
+Source (Caller): <android.app.Activity: void onCreate(android.os.Bundle)>
+Target (Callee): <java.lang.RuntimeException: void <init>(java.lang.String)>
+---
+Source (Caller): <com.watchdog.Main: void onCreate(android.os.Bundle)>
+Target (Callee): <android.content.Intent: void <init>(android.content.Context,java.lang.Class)>
+---
+Source (Caller): <android.content.ContextWrapper: android.content.ComponentName startService(android.content.Intent)>
+Target (Callee): <java.lang.RuntimeException: void <init>(java.lang.String)>
+---
+Source (Caller): <java.lang.Object: void <init>()>
+Target (Callee): <java.lang.RuntimeException: void <init>(java.lang.String)>
+---
+Source (Caller): <java.lang.Throwable: void <init>()>
+Target (Callee): <java.lang.Object: void <init>()>
+---
+Source (Caller): <java.lang.RuntimeException: void <init>(java.lang.String)>
+Target (Callee): <java.lang.Exception: void <init>()>
+---
+Source (Caller): <com.watchdog.Main: void onCreate(android.os.Bundle)>
+Target (Callee): <android.content.Intent: void <clinit>()>
+---
+Source (Caller): <com.watchdog.Main: void onCreate(android.os.Bundle)>
+Target (Callee): <android.content.ContextWrapper: android.content.ComponentName startService(android.content.Intent)>
+---
+Source (Caller): <com.watchdog.Main: void onCreate(android.os.Bundle)>
+Target (Callee): <android.content.Intent: android.content.Intent putExtra(java.lang.String,int)>
+---
+Source (Caller): <java.lang.Object: void <init>()>
+Target (Callee): <java.lang.Object: void finalize()>
+---
+Source (Caller): <java.lang.Exception: void <init>()>
+Target (Callee): <java.lang.Throwable: void <init>()>
+---
+Source (Caller): <android.content.Intent: void <clinit>()>
+Target (Callee): <android.content.Intent: void <clinit>()>
+---
+Source (Caller): <com.watchdog.Main: void onCreate(android.os.Bundle)>
+Target (Callee): <android.app.Activity: void onCreate(android.os.Bundle)>
+---
+Source (Caller): <android.content.Intent: void <init>(android.content.Context,java.lang.Class)>
+Target (Callee): <java.lang.RuntimeException: void <init>(java.lang.String)>
+---
+Source (Caller): <android.content.Intent: android.content.Intent putExtra(java.lang.String,int)>
+Target (Callee): <java.lang.RuntimeException: void <init>(java.lang.String)>
+---
+Source (Caller): <android.app.Activity: void finish()>
+Target (Callee): <java.lang.RuntimeException: void <init>(java.lang.String)>
+---
+Source (Caller): <java.lang.Object: void finalize()>
+Target (Callee): <java.lang.RuntimeException: void <init>(java.lang.String)>
+---
+Source (Caller): <android.content.Intent: void <init>(android.content.Context,java.lang.Class)>
+Target (Callee): <java.lang.Object: void <init>()>
+---
