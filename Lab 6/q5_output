@@ -1,0 +1,58 @@
+ApkAnalysisTemplate v1.0 started on Sun Nov 10 20:56:49 CET 2024
+
+Found call to f: i1 = staticinvoke <Main: int f(int)>(b0)
+Created cloned method: f_clone1
+Found call to f: i3 = staticinvoke <Main: int f(int)>(i2)
+Created cloned method: f_clone2
+
+Original main method:
+    public static void main(java.lang.String[])
+    {
+        java.lang.String[] r0;
+        byte b0;
+        int i1, i2, i3;
+        java.io.PrintStream $r1;
+
+        r0 := @parameter0: java.lang.String[];
+
+        b0 = 4;
+
+        i1 = staticinvoke <Main: int f(int)>(b0);
+
+        i2 = i1 * -1;
+
+        i3 = staticinvoke <Main: int f(int)>(i2);
+
+        $r1 = <java.lang.System: java.io.PrintStream out>;
+
+        virtualinvoke $r1.<java.io.PrintStream: void println(int)>(i3);
+
+        return;
+    }
+
+
+Cloned main method:
+    public static void clonedMain(java.lang.String[])
+    {
+        java.lang.String[] r0;
+        byte b0;
+        int i1, i2, i3;
+        java.io.PrintStream $r1;
+
+        r0 := @parameter0: java.lang.String[];
+
+        b0 = 4;
+
+        i1 = staticinvoke <Main: int f_clone1(int)>(b0);
+
+        i2 = i1 * -1;
+
+        i3 = staticinvoke <Main: int f_clone2(int)>(i2);
+
+        $r1 = <java.lang.System: java.io.PrintStream out>;
+
+        virtualinvoke $r1.<java.io.PrintStream: void println(int)>(i3);
+
+        return;
+    }
+
