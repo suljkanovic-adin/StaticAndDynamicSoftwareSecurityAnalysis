@@ -1,0 +1,9 @@
+PackManager.v().getPack("wjtp").add(
+				new Transform("wjtp.myTransform", new SceneTransformer() {
+					protected void internalTransform(String pn, Map o) {
+			            // Get all classes
+			            Chain<SootClass> classes = Scene.v().getApplicationClasses();
+			            System.out.println("Number of classes in memory: " + classes.size());
+					}
+				}));
+		PackManager.v().runPacks();
