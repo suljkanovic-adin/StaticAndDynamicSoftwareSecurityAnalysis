@@ -1,87 +1,87 @@
 PackManager.v().getPack("wjtp").add(
 				new Transform("wjtp.myTransform", new SceneTransformer() {
 					protected void internalTransform(String pn, Map o) {
-					    // Get the main class
-				            SootClass mainClass = Scene.v().getMainClass();
-				            
-				            // Get the main method and method f
-				            SootMethod mainMethod = mainClass.getMethodByName("main");
-				            SootMethod methodF = mainClass.getMethodByName("f");
-				            
-				            // Get their bodies
-				            Body mainBody = mainMethod.retrieveActiveBody();
-				            Body fBody = methodF.retrieveActiveBody();
-				            
-				            // Find calls to method f
-				            List<Stmt> fCalls = new ArrayList<Stmt>();
-				            int cloneCount = 1;
-				            Map<Integer, SootMethod> cloneMap = new HashMap<Integer, SootMethod>();
-				            
-				            for (Unit unit : mainBody.getUnits()) {
-				            	if (unit instanceof AssignStmt) {
-				            		AssignStmt assign = (AssignStmt) unit;
-				            		if (assign.containsInvokeExpr()) {
-				                        InvokeExpr invoke = assign.getInvokeExpr();
-				                        if (invoke.getMethod().getName().equals("f")) {
-				                            fCalls.add((Stmt)unit);
-				                            System.out.println("Found call to f: " + unit);
-				                            
-				                            // Create clone immediately when finding a call
-				                            String cloneName = "f_clone" + cloneCount;
-				                            List<Type> parameterTypes = new ArrayList<Type>();
-				                            parameterTypes.add(IntType.v());
-				                            SootMethod clonedMethod = new SootMethod(cloneName, parameterTypes, IntType.v(), Modifier.PUBLIC | Modifier.STATIC);
-				                            
-				                            Body clonedBody = (Body) fBody.clone();
-				                            clonedMethod.setActiveBody(clonedBody);
-				                            mainClass.addMethod(clonedMethod);
-				                            
-				                            cloneMap.put(cloneCount, clonedMethod);
-				                            System.out.println("Created cloned method: " + cloneName);
-				                            cloneCount++;
-				                        }
-				                    }
-				            	}
-				            }
-				            
-					// Create clonedMain method
-			                List<Type> mainParams = new ArrayList<Type>();
-			                mainParams.add(ArrayType.v(RefType.v("java.lang.String"), 1));
-			                SootMethod clonedMain = new SootMethod("clonedMain", mainParams, VoidType.v(), Modifier.PUBLIC | Modifier.STATIC);
-			                
-			                // Copy main's body for clonedMain
-			                Body clonedMainBody = (Body) mainBody.clone();
-			                // Reset counter for replacing calls
-			                cloneCount = 1; 
-			                
-			                // Replace f calls with clone calls in clonedMain
-			                for (Unit unit : clonedMainBody.getUnits()) {
-			                	if (unit instanceof AssignStmt) {
-			                		AssignStmt assign = (AssignStmt) unit;
-			                		if (assign.containsInvokeExpr()) {
-			                			InvokeExpr invoke = assign.getInvokeExpr();
-			                			if (invoke.getMethod().getName().equals("f")) {
-			                				// Find corresponding clone
-			                                SootMethod clone = cloneMap.get(cloneCount);
-			                                // Create new invoke expression for clone
-			                                InvokeExpr newInvoke = Jimple.v().newStaticInvokeExpr(
-			                                    clone.makeRef(),
-			                                    invoke.getArgs()
-			                                );
-			                                assign.setRightOp(newInvoke);
-			                                cloneCount++;
-			                			}
-			                		}
-			                	}
-			                }
-			                
-			                clonedMain.setActiveBody(clonedMainBody);
-			                mainClass.addMethod(clonedMain);
-			                
-			                System.out.println("\nOriginal main method:");
-			                System.out.println(mainBody);
-			                System.out.println("\nCloned main method:");
-			                System.out.println(clonedMainBody);
+						// Get the main class
+			            SootClass mainClass = Scene.v().getMainClass();
+			            
+			            // Get the main method and method f
+			            SootMethod mainMethod = mainClass.getMethodByName("main");
+			            SootMethod methodF = mainClass.getMethodByName("f");
+			            
+			            // Get their bodies
+			            Body mainBody = mainMethod.retrieveActiveBody();
+			            Body fBody = methodF.retrieveActiveBody();
+			            
+			            // Find calls to method f
+			            List<Stmt> fCalls = new ArrayList<Stmt>();
+			            int cloneCount = 1;
+			            Map<Integer, SootMethod> cloneMap = new HashMap<Integer, SootMethod>();
+			            
+			            for (Unit unit : mainBody.getUnits()) {
+			            	if (unit instanceof AssignStmt) {
+			            		AssignStmt assign = (AssignStmt) unit;
+			            		if (assign.containsInvokeExpr()) {
+			                        InvokeExpr invoke = assign.getInvokeExpr();
+			                        if (invoke.getMethod().getName().equals("f")) {
+			                            fCalls.add((Stmt)unit);
+			                            System.out.println("Found call to f: " + unit);
+			                            
+			                            // Create clone immediately when finding a call
+			                            String cloneName = "f_clone" + cloneCount;
+			                            List<Type> parameterTypes = new ArrayList<Type>();
+			                            parameterTypes.add(IntType.v());
+			                            SootMethod clonedMethod = new SootMethod(cloneName, parameterTypes, IntType.v(), Modifier.PUBLIC | Modifier.STATIC);
+			                            
+			                            Body clonedBody = (Body) fBody.clone();
+			                            clonedMethod.setActiveBody(clonedBody);
+			                            mainClass.addMethod(clonedMethod);
+			                            
+			                            cloneMap.put(cloneCount, clonedMethod);
+			                            System.out.println("Created cloned method: " + cloneName);
+			                            cloneCount++;
+			                        }
+			                    }
+			            	}
+			            }
+			            
+			            // Create clonedMain method
+		                List<Type> mainParams = new ArrayList<Type>();
+		                mainParams.add(ArrayType.v(RefType.v("java.lang.String"), 1));
+		                SootMethod clonedMain = new SootMethod("clonedMain", mainParams, VoidType.v(), Modifier.PUBLIC | Modifier.STATIC);
+		                
+		                // Copy main's body for clonedMain
+		                Body clonedMainBody = (Body) mainBody.clone();
+		                // Reset counter for replacing calls
+		                cloneCount = 1; 
+		                
+		                // Replace f calls with clone calls in clonedMain
+		                for (Unit unit : clonedMainBody.getUnits()) {
+		                	if (unit instanceof AssignStmt) {
+		                		AssignStmt assign = (AssignStmt) unit;
+		                		if (assign.containsInvokeExpr()) {
+		                			InvokeExpr invoke = assign.getInvokeExpr();
+		                			if (invoke.getMethod().getName().equals("f")) {
+		                				// Find corresponding clone
+		                                SootMethod clone = cloneMap.get(cloneCount);
+		                                // Create new invoke expression for clone
+		                                InvokeExpr newInvoke = Jimple.v().newStaticInvokeExpr(
+		                                    clone.makeRef(),
+		                                    invoke.getArgs()
+		                                );
+		                                assign.setRightOp(newInvoke);
+		                                cloneCount++;
+		                			}
+		                		}
+		                	}
+		                }
+		                
+		                clonedMain.setActiveBody(clonedMainBody);
+		                mainClass.addMethod(clonedMain);
+		                
+		                System.out.println("\nOriginal main method:");
+		                System.out.println(mainBody);
+		                System.out.println("\nCloned main method:");
+		                System.out.println(clonedMainBody);
 					}
 				}));
 		PackManager.v().runPacks();
