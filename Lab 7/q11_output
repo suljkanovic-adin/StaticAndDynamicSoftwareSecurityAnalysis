@@ -1,0 +1,25 @@
+Soot started on Tue Nov 12 10:24:45 CET 2024
+Starting transformer...
+Created IFDS problem...
+Solving...
+Analysis complete. Checking results...
+Analyzing method: <init>
+At statement: r0 := @this: q11_test
+Uninitialized variables: []
+At statement: specialinvoke r0.<java.lang.Object: void <init>()>()
+Uninitialized variables: []
+At statement: return
+Uninitialized variables: []
+Analyzing method: main
+At statement: r0 := @parameter0: java.lang.String[]
+Uninitialized variables: []
+At statement: b1 = 5
+Uninitialized variables: [b0, b1]
+At statement: if b1 <= 10 goto return
+Uninitialized variables: [b0]
+At statement: b0 = 20
+Uninitialized variables: [b0]
+At statement: return
+Uninitialized variables: [b0]
+Soot finished on Tue Nov 12 10:25:38 CET 2024
+Soot has run for 0 min. 52 sec.
