@@ -1,0 +1,11 @@
+
+public class q11_test {
+    public static void main(String[] args) {
+        int x;
+        int y = 5;
+
+        if (y > 10) {
+            x = 20;
+        }
+    }
+}
