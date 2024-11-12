@@ -1,0 +1,9 @@
+void caller() {
+    int x;  // uninitialized
+    int y = 5;  // initialized
+    int z = foo(x);  // call
+}
+
+int foo(int a) {
+    return a + 1;
+}
